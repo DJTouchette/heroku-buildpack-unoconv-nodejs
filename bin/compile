@@ -96,4 +96,4 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
     https://nomnom.heroku.com/?request_id=$REQUEST_ID
 ) &
 
-apt-get install unoconv libreoffice -qy
+sudo apt-get install unoconv libreoffice -qy
