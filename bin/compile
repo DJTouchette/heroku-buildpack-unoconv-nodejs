@@ -15,8 +15,18 @@ source $bp_dir/bin/common.sh
 # Output npm debug info on error
 trap cat_npm_debug_log ERR
 
+
 # Look in package.json's engines.node field for a semver range
 semver_range=$(cat $build_dir/package.json | $bp_dir/vendor/jq -r .engines.node)
+
+status "Making opt dir"
+mkdir /tmp/opt
+status "going to opt dir"
+cd /tmp/opt
+status "getting unoconv"
+wget https://raw.githubusercontent.com/dagwieers/unoconv/master/unoconv
+status "chmod unocov"
+chmod ugo+x /tmp/opt/unoconv
 
 # Resolve node version using semver.io
 node_version=$(curl --silent --get --data-urlencode "range=${semver_range}" http://semver.io/node/resolve)
@@ -95,10 +105,5 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
     --header "content-type: application/json" \
     https://nomnom.heroku.com/?request_id=$REQUEST_ID
 ) &
-
-mkdir /tmp/opt
-cd /tmp/opt
-wget https://raw.githubusercontent.com/dagwieers/unoconv/master/unoconv
-chmod ugo+x tmp/opt/unoconv
 
 
