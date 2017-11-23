@@ -96,9 +96,9 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
     https://nomnom.heroku.com/?request_id=$REQUEST_ID
 ) &
 
-mkdir /opt
-cd /opt
+mkdir /tmp/opt
+cd /tmp/opt
 wget https://raw.githubusercontent.com/dagwieers/unoconv/master/unoconv
-chmod ugo+x /opt/unoconv
+chmod ugo+x tmp/opt/unoconv
 
 
